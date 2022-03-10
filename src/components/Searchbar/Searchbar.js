@@ -1,23 +1,25 @@
-import s from './Searchbar.module.css'
+import s from "./Searchbar.module.css";
 import React, { Component } from "react";
 
 class SearchBar extends Component {
   state = {
-    name:""
+    name: "",
   };
-
- 
 
   onChangeInput = (e) => {
     this.state.name = e.currentTarget.value;
   };
 
   reset = () => {
-    this.setState({ name:""});
+    this.setState({ name: "" });
+    document.querySelector('input').value=""
   };
 
   onSubmit = (e) => {
     e.preventDefault();
+    if (this.state.name.trim() === "") {
+      alert('please write word')
+    }
     this.props.onSubmit(this.state.name);
     this.reset();
   };
@@ -25,18 +27,17 @@ class SearchBar extends Component {
   render() {
     return (
       <>
-        <header className={s.searchbar}>
-          <form className={s.form} onSubmit={this.onSubmit}>
+        <header className={s.Searchbar}>
+          <form className={s.SearchForm} onSubmit={this.onSubmit}>
             <button type="submit" className={s.button}>
-              <span className={s.buttonLabel}>Search</span>
+              <span className={s.label}>Search</span>
             </button>
 
             <input
               className={s.input}
-            //   value={this.state.value}
               type="text"
-            //   autocomplete="off"
-            //   autofocus
+              //   autocomplete="off"
+              //   autofocus
               placeholder="Search images and photos"
               onChange={this.onChangeInput}
             />

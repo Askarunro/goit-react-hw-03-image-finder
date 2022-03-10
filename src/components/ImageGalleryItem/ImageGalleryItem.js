@@ -1,20 +1,26 @@
 import i from './ImageGalleryItem.module.css'
+import React,{Component} from 'react'
 
+class Item extends Component {
 
-function Item({hits}) {
+  onClick=(e)=>{
+    const a = e.currentTarget.dataset.url
+    console.log(a)
+  }
+
+ 
+
+render(){
   return (
     <>
-      {hits.map((hit) => (
-          <li key={hit.id} className={i.item}>
-            <a href={hit.largeImageURL} className={i.link}>
-              <img src={hit.webformatURL} className={i.img}/>
-              </a>
+      {this.props.hits.map((hit) => (
+          <li key={hit.id} className={i.item} data-url={hit.largeImageURL}  onClick={this.onClick}>
+              <img src={hit.webformatURL} className={i.img} />
           </li>
         ))}
     </>
   );
 }
+}
 
 export default Item;
-
-// id,webformatURL,largeImageURL 
