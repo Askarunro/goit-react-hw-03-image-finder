@@ -34,8 +34,8 @@ class App extends Component {
     return (
       <>
         <SearchBar onSubmit={this.onSubmit} />
-        {/* <Loader/>
-       <Button/> */}
+        {/* <Loader /> */}
+        <Button />
         {this.state.hits && <ImageGallery hits={this.state.hits} />}
       </>
     );
