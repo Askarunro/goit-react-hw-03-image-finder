@@ -1,12 +1,19 @@
 import Item from '..//ImageGalleryItem'
+import React,{Component} from 'react' 
 import l from "./ImageGallery.module.css"
 
-function List({ hits }) {
+class List extends Component{
+
+  
+
+  render(){
     return (
       <ul className={l.list}>
-        <Item hits={hits}/>
+        <Item hits={this.props.hits} open={this.props.openModal} toggleModal={this.props.onClick}/>
       </ul>
     );
+  }
+
   }
   
   export default List;

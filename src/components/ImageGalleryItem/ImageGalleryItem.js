@@ -4,18 +4,15 @@ import React,{Component} from 'react'
 class Item extends Component {
 
   onClick=(e)=>{
-    const a = e.currentTarget.dataset.url
-    console.log(a)
+    this.props.open(e.currentTarget.dataset.url)
   }
-
- 
 
 render(){
   return (
     <>
       {this.props.hits.map((hit) => (
-          <li key={hit.id} className={i.item} data-url={hit.largeImageURL}  onClick={this.onClick}>
-              <img src={hit.webformatURL} className={i.img} />
+          <li key={hit.id} className={i.item} onClick={this.props.toggleModal}>
+              <img src={hit.webformatURL} className={i.img} data-url={hit.largeImageURL}  onClick={this.onClick}/>
           </li>
         ))}
     </>
