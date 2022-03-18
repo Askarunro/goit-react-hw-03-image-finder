@@ -1,19 +1,21 @@
-import Item from '..//ImageGalleryItem'
-import React,{Component} from 'react' 
-import l from "./ImageGallery.module.css"
+import Item from "..//ImageGalleryItem";
+import l from "./ImageGallery.module.css";
+import PropTypes from "prop-types";
 
-class List extends Component{
 
-  
+function List({ hits, openModal, onClick }) {
+  return (
+    <ul className={l.list}>
+      <Item hits={hits} open={openModal} toggleModal={onClick} />
+    </ul>
+  );
+}
 
-  render(){
-    return (
-      <ul className={l.list}>
-        <Item hits={this.props.hits} open={this.props.openModal} toggleModal={this.props.onClick}/>
-      </ul>
-    );
-  }
+export default List;
 
-  }
-  
-  export default List;
+
+List.propTypes = {
+  hits: PropTypes.array,
+  openModal: PropTypes.func,
+  onClick: PropTypes.func,
+};
